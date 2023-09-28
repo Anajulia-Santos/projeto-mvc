@@ -1,22 +1,23 @@
-const app = require('../../startup.js')
 const studentModel = require('../Model/studentModel.js')
 
-app.get("/getAllStudents", (req, res) => {
-    
-    const studentsList = []
+module.export = (app) => {
+    app.get("/getAllStudents", (req, res) => {
 
-    for(let count = 5; count > 0; count--){
-        const student = studentModel
+        const studentsList = []
 
-        student.RA = 101
-        student.Nome = "Ana Julia"
-        student.DtIngressoCurso = "25/01/2023"
-        student.Curso = "DEV"
+        for (let count = 5; count > 0; count--) {
+            const student = studentModel
 
-        studentsList.push(student.RegistroJSON())
-       
-    }
+            student.RA = 101
+            student.Nome = "Ana Julia"
+            student.DtIngressoCurso = "25/01/2023"
+            student.Curso = "DEV"
 
-    res.json(studentsList)
-})
+            studentsList.push(student.RegistroJSON())
+
+        }
+
+        res.json(studentsList)
+    })
+}
 

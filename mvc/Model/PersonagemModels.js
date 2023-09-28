@@ -1,22 +1,23 @@
 class Personagens {
 
-    anoDeCriacao
     nome
-    jogodeOrigem
+    poder
+    genero
+    tamanho
+    profissao
     
-    constructor(anoDeCriacao, nome, jogodeOrigem){
-        this.anoDeCriacao = anoDeCriacao
+    constructor(nome, poder, genero){
         this.nome = nome
-        this.jogodeOrigem = jogodeOrigem
+        this.poder = poder
+        this.genero = genero
     }
     pegarInformacoes(){
         return{
-            "anoDeCriacao" : this.anoDeCriacao,
             "nome" : this.nome,
-            "jogodeOrigem" : this.jogodeOrigem
+            "poder" : this.poder,
+            "genero" : this.genero
     }
     }
 }
-let mario = new Personagens("1983", "Mario", "MarioBros")
-console.log(mario.anoDeCriacao+" "+mario.jogodeOrigem+" "+mario.nome)
+
 module.exports = Personagens
