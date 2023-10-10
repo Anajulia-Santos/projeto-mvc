@@ -1,4 +1,4 @@
-const Personagem = require('../Model/PersonagemModels.js')
+const Personagem = require('../Model/PersonModels.js')
 
 module.export = (app) => {
     app.get("/getAllPersons", (req, res) => {

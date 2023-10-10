@@ -1,30 +1,23 @@
-class Person {
+class Personagens {
 
     nome
-    startMoeda
+    poder
     genero
-    tipo
-    descricao
+    tamanho
+    profissao
     
-    constructor(nome, startMoeda, genero, tipo, descricao){
+    constructor(nome, poder, genero){
         this.nome = nome
-        this.startMoeda = startMoeda
+        this.poder = poder
         this.genero = genero
-        this.tipo = tipo
-        this.descricao = descricao
     }
-
-    cadPerson(){
+    pegarInformacoes(){
+        return{
+            "nome" : this.nome,
+            "poder" : this.poder,
+            "genero" : this.genero
     }
-    delPerson(){
     }
-    updatePerson(){
-    }
-    buscPerson(){
-    }
-    buscAllPerson(){
-    }
-    
 }
 
-module.exports = Person
+module.exports = Personagens
