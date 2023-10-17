@@ -4,7 +4,7 @@ var connection = mysql.createConnection({
     host: 'localhost',
     user: 'root',
     password: '',
-    database: 'dbback'
+    database: 'bdgp'
 }).promise();
 
 // function SelectPersonagem() {

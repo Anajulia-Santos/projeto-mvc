@@ -1,12 +1,12 @@
-const ItemDAO = require('../DAO/ItemDAO.js')
+const AtractionDAO = require('../DAO/AtractionsDAO.js')
 
 module.exports = (app) => {
 
     app.get("/getAllAtrativos", async (req, res) => {        
-        const itemDAO = new ItemDAO()
+        const atractionDAO = new AtractionDAO()
 
         //Retorna no formato Json
-        res.json(await itemDAO.consultarTodos())        
+        res.json(await atractionDAO.consultarTodos())        
     })
         
 }

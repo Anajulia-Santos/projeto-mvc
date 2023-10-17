@@ -26,24 +26,40 @@
                 <div class="col text-center"><i class="bi bi-pen-fill m-1 "></i>Update</div>
                 <div class="col text-center"><i class="bi bi-trash-fill m-1"></i>Delete</div>
             </div>
-            <div class="row m-3 border p-2 text-start">
+            <!-- <div class="row m-3 border p-2 text-start">-->
                 <!-- Loop vindo do Banco de Dados -->
-                <div class="col border-end text-center">TRIP COIN</div>
+                <!-- <div class="col border-end text-center">TRIP COIN</div>
                 <div class="col  border-end text-center">1.222.222.222</div>
                 <div class="col  border-end text-center images"><img src="../public/images/2.jpg" alt=""></div>
                 <div class="col text-center"><button class="btn bg-success "><i class="bi bi-pen-fill m-1"></i></div>
                 <div class="col text-center"><button class="btn bg-danger"><i class="bi bi-trash-fill m-1"></i></div>
-            </div>
-            <div class="row m-3 border p-2 text-start">
-                <!-- Loop vindo do Banco de Dados -->
-                <div class="col border-end text-center">FISH COIN</div>
-                <div class="col  border-end text-center">25.222.255.55</div> 
-                <div class="col  border-end text-center images"><img src="../public/images/2.jpg" alt=""></div>
-                <div class="col text-center"><button class="btn bg-success "><i class="bi bi-pen-fill m-1"></i></div>
-                <div class="col text-center"><button class="btn bg-danger"><i class="bi bi-trash-fill m-1"></i></div>
-            </div>
+            </div>  -->
+           
         </section>
     </main>
+    <script>
+         async function CarregarCoins() {
+            let elCoins = document.querySelector("#list-coins")
+
+            const dados = await fetch('http://localhost:3000/getAllCoins')
+            const json = await dados.json()
+            let coins = await json
+
+            for (coin in coins) {
+
+                elCoins.innerHTML = `
+                <div class="row m-3 border p-2 text-start">
+                    <div class="col border-end text-center">${coin.nome}</div>
+                    <div class="col  border-end text-center">${coin.value}</div>    
+                    <div class="col  border-end text-center images"><img src="../public/images/${coin.image}" alt=""></div>
+                    <div class="col text-center"><button class="btn bg-success "><i class="bi bi-pen-fill m-1"></i></div>
+                    <div class="col text-center"><button class="btn bg-danger"><i class="bi bi-trash-fill m-1"></i></div>
+                 </div>
+                
+                `
+            }
+        }
+    </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
         crossorigin="anonymous"></script>

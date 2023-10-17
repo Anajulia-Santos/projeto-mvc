@@ -1,4 +1,4 @@
-const Item = require('../models/ItemModel')
+const Item = require('../Model/itemModel')
 const Db = require('../../repository/Database')
 
 class ItemDAO{
