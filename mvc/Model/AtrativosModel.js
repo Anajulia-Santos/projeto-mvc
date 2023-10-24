@@ -1,78 +1,78 @@
 class Atrativos{
 
-    #id_atrativo
-    #nome_atrativo
-    #lat_atrativo
-    #long_atrativo
-    #desc_atrativo
-    #image_atrativo
+    #id
+    #nome
+    #lat
+    #long
+    #desc
+    #image
 
-    constructor(id_atrativo,nome_atrativo,lat_atrativo,long_atrativo,desc_atrativo,image_atrativo,){
-        this.#id_atrativo = id_atrativo
-        this.#nome_atrativo = nome_atrativo 
-        this.#lat_atrativo = lat_atrativo
-        this.#long_atrativo = long_atrativo
-        this.#desc_atrativo = desc_atrativo
-        this.#image_atrativo = image_atrativo
+    constructor(id,nome,lat,long,desc,image,){
+        this.#id = id
+        this.#nome = nome 
+        this.#lat = lat
+        this.#long = long
+        this.#desc = desc
+        this.#image = image
     }
 
-    get id_atrativo(){
-        return this.#id_atrativo
+    get id(){
+        return this.#id
     }
 
-    set id_atrativo(value){
-        this.#id_atrativo = value
+    set id(value){
+        this.#id = value
     }
 
-    get nome_atrativo(){
-        return this.#nome_atrativo
+    get nome(){
+        return this.#nome
     }
 
-    set nome_atrativo(value){
-        this.#nome_atrativo = value
+    set nome(value){
+        this.#nome = value
     }
     
-    get lat_atrativo(){
-        return this.#lat_atrativo
+    get lat(){
+        return this.#lat
     }
 
-    set lat_atrativo(value){
-        this.#lat_atrativo = value
+    set lat(value){
+        this.#lat = value
     }
 
-     get long_atrativo(){
-        return this.#long_atrativo
+     get long(){
+        return this.#long
     }
 
-    set long_atrativo(value){
-        this.#long_atrativo = value
+    set long(value){
+        this.#long = value
     }
 
-    get desc_atrativo(){
-        return this.#desc_atrativo
+    get desc(){
+        return this.#desc
     }
 
-    set desc_atrativo(value){
-        this.#desc_atrativo = value
+    set desc(value){
+        this.#desc = value
     }
     
-    get image_atrativo(){
-        return this.#image_atrativo
+    get image(){
+        return this.#image
     }
 
-    set image_atrativo(value){
-        this.#image_atrativo = value
+    set image(value){
+        this.#image = value
     }
 
     toJson(){
 
         return {
-            "id_atrativo": this.#id_atrativo,
-            "nome_atrativo": this.#nome_atrativo,
-            "lat_atrativo": this.#lat_atrativo,
-            "long_atrativo": this.#long_atrativo,
-            "desc_atrativo": this.#desc_atrativo,
-            "image_atrativo": this.#image_atrativo
+            "id": this.#id,
+            "nome": this.#nome,
+            "lat": this.#lat,
+            "long": this.#long,
+            "desc": this.#desc,
+            "image": this.#image
         }
       
     }

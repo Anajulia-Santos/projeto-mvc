@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 26-Set-2023 às 18:32
--- Versão do servidor: 10.4.27-MariaDB
--- versão do PHP: 8.1.12
+-- Tempo de geração: 24/10/2023 às 19:06
+-- Versão do servidor: 10.4.28-MariaDB
+-- Versão do PHP: 8.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,7 +24,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `atrativos`
+-- Estrutura para tabela `atrativos`
 --
 
 CREATE TABLE `atrativos` (
@@ -37,7 +37,7 @@ CREATE TABLE `atrativos` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
--- Extraindo dados da tabela `atrativos`
+-- Despejando dados para a tabela `atrativos`
 --
 
 INSERT INTO `atrativos` (`id_atrativos`, `nome_atrativo`, `lat_atrativo`, `long_atrativo`, `desc_atrativo`, `image_atrativo`) VALUES
@@ -47,7 +47,7 @@ INSERT INTO `atrativos` (`id_atrativos`, `nome_atrativo`, `lat_atrativo`, `long_
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `coins`
+-- Estrutura para tabela `coins`
 --
 
 CREATE TABLE `coins` (
@@ -58,7 +58,7 @@ CREATE TABLE `coins` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
--- Extraindo dados da tabela `coins`
+-- Despejando dados para a tabela `coins`
 --
 
 INSERT INTO `coins` (`id_coin`, `nome_coin`, `value_coin`, `image_coin`) VALUES
@@ -68,7 +68,7 @@ INSERT INTO `coins` (`id_coin`, `nome_coin`, `value_coin`, `image_coin`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `cupons`
+-- Estrutura para tabela `cupons`
 --
 
 CREATE TABLE `cupons` (
@@ -80,7 +80,7 @@ CREATE TABLE `cupons` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
--- Extraindo dados da tabela `cupons`
+-- Despejando dados para a tabela `cupons`
 --
 
 INSERT INTO `cupons` (`id_cupom`, `codigo_cupom`, `nome_cupom`, `validade_cupom`, `valor_cupom`) VALUES
@@ -90,7 +90,7 @@ INSERT INTO `cupons` (`id_cupom`, `codigo_cupom`, `nome_cupom`, `validade_cupom`
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `descontos`
+-- Estrutura para tabela `descontos`
 --
 
 CREATE TABLE `descontos` (
@@ -99,7 +99,7 @@ CREATE TABLE `descontos` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
--- Extraindo dados da tabela `descontos`
+-- Despejando dados para a tabela `descontos`
 --
 
 INSERT INTO `descontos` (`id_desconto`, `valor_desconto`) VALUES
@@ -109,7 +109,7 @@ INSERT INTO `descontos` (`id_desconto`, `valor_desconto`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `gamers`
+-- Estrutura para tabela `gamers`
 --
 
 CREATE TABLE `gamers` (
@@ -119,21 +119,23 @@ CREATE TABLE `gamers` (
   `email_gamer` varchar(60) NOT NULL,
   `dtnasc_gamer` date NOT NULL,
   `personagens_id_personagem` int(11) NOT NULL,
-  `coins_id_coin` int(11) NOT NULL
+  `coins_id_coin` int(11) NOT NULL,
+  `nivel_gamer` enum('0','1','2') DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
--- Extraindo dados da tabela `gamers`
+-- Despejando dados para a tabela `gamers`
 --
 
-INSERT INTO `gamers` (`id_gamer`, `nome_gamer`, `senha_gamer`, `email_gamer`, `dtnasc_gamer`, `personagens_id_personagem`, `coins_id_coin`) VALUES
-(1, 'Felipe Pineda', '112351', 'fp@gmail.com', '2012-01-07', 1, 1),
-(2, 'Andrei', '051563216', 'ab@gmail.com', '2013-08-14', 2, 1);
+INSERT INTO `gamers` (`id_gamer`, `nome_gamer`, `senha_gamer`, `email_gamer`, `dtnasc_gamer`, `personagens_id_personagem`, `coins_id_coin`, `nivel_gamer`) VALUES
+(0, 'João', '112351', '@gmail.com', '2012-01-07', 1, 1, '0'),
+(1, 'Maria', '3446675', '@gmail.com', '2003-12-12', 1, 1, '1'),
+(2, 'Ana', '051563216', '@gmail.com', '2013-08-14', 2, 1, '2');
 
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `log_acessos`
+-- Estrutura para tabela `log_acessos`
 --
 
 CREATE TABLE `log_acessos` (
@@ -144,7 +146,7 @@ CREATE TABLE `log_acessos` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
--- Extraindo dados da tabela `log_acessos`
+-- Despejando dados para a tabela `log_acessos`
 --
 
 INSERT INTO `log_acessos` (`id_log_acesso`, `ultimo_acesso`, `status_acesso`, `gamers_id_gamer`) VALUES
@@ -154,7 +156,7 @@ INSERT INTO `log_acessos` (`id_log_acesso`, `ultimo_acesso`, `status_acesso`, `g
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `missoes`
+-- Estrutura para tabela `missoes`
 --
 
 CREATE TABLE `missoes` (
@@ -165,7 +167,7 @@ CREATE TABLE `missoes` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
--- Extraindo dados da tabela `missoes`
+-- Despejando dados para a tabela `missoes`
 --
 
 INSERT INTO `missoes` (`id_missao`, `nome_missao`, `desc_missao`, `recompensa_missao`) VALUES
@@ -175,7 +177,7 @@ INSERT INTO `missoes` (`id_missao`, `nome_missao`, `desc_missao`, `recompensa_mi
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `missoes_has_personagens`
+-- Estrutura para tabela `missoes_has_personagens`
 --
 
 CREATE TABLE `missoes_has_personagens` (
@@ -184,7 +186,7 @@ CREATE TABLE `missoes_has_personagens` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
--- Extraindo dados da tabela `missoes_has_personagens`
+-- Despejando dados para a tabela `missoes_has_personagens`
 --
 
 INSERT INTO `missoes_has_personagens` (`missoes_id_missao`, `personagens_id_personagem`) VALUES
@@ -194,7 +196,7 @@ INSERT INTO `missoes_has_personagens` (`missoes_id_missao`, `personagens_id_pers
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `personagens`
+-- Estrutura para tabela `personagens`
 --
 
 CREATE TABLE `personagens` (
@@ -208,17 +210,17 @@ CREATE TABLE `personagens` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
--- Extraindo dados da tabela `personagens`
+-- Despejando dados para a tabela `personagens`
 --
 
 INSERT INTO `personagens` (`id_personagem`, `nome_personagem`, `genero_personagem`, `tipo_personagem`, `totalcoin_personagem`, `start_latitude`, `start_longitude`) VALUES
-(1, 'Pined', 'M', 'Humano', '0', '-22.12001041675085', '-51.40542770057783'),
-(2, 'Andrei', 'M', 'Humano', '9999999999', '-22.12001041675085', '-51.40542770057783');
+(1, 'Pined', 'M', 'Humano', 0, '-22.12001041675085', '-51.40542770057783'),
+(2, 'Andrei', 'M', 'Humano', 9999999999, '-22.12001041675085', '-51.40542770057783');
 
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `promocoes`
+-- Estrutura para tabela `promocoes`
 --
 
 CREATE TABLE `promocoes` (
@@ -231,7 +233,7 @@ CREATE TABLE `promocoes` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
--- Extraindo dados da tabela `promocoes`
+-- Despejando dados para a tabela `promocoes`
 --
 
 INSERT INTO `promocoes` (`id_promocao`, `nome_promocao`, `dt_start_promocao`, `dt_end_promocao`, `desc_promocao`, `ativa_promocao`) VALUES
@@ -241,7 +243,7 @@ INSERT INTO `promocoes` (`id_promocao`, `nome_promocao`, `dt_start_promocao`, `d
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `skins`
+-- Estrutura para tabela `skins`
 --
 
 CREATE TABLE `skins` (
@@ -257,7 +259,7 @@ CREATE TABLE `skins` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
--- Extraindo dados da tabela `skins`
+-- Despejando dados para a tabela `skins`
 --
 
 INSERT INTO `skins` (`id_skin`, `categoria_skin`, `nome_skin`, `desc_skin`, `genero_skin`, `valor_skin`, `raridade_skin`, `foto1_skin`, `foto2_skin`) VALUES
@@ -267,7 +269,7 @@ INSERT INTO `skins` (`id_skin`, `categoria_skin`, `nome_skin`, `desc_skin`, `gen
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `vendas`
+-- Estrutura para tabela `vendas`
 --
 
 CREATE TABLE `vendas` (
@@ -277,7 +279,7 @@ CREATE TABLE `vendas` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
--- Extraindo dados da tabela `vendas`
+-- Despejando dados para a tabela `vendas`
 --
 
 INSERT INTO `vendas` (`id_venda`, `hora_venda`, `dia_venda`) VALUES
@@ -289,31 +291,31 @@ INSERT INTO `vendas` (`id_venda`, `hora_venda`, `dia_venda`) VALUES
 --
 
 --
--- Índices para tabela `atrativos`
+-- Índices de tabela `atrativos`
 --
 ALTER TABLE `atrativos`
   ADD PRIMARY KEY (`id_atrativos`);
 
 --
--- Índices para tabela `coins`
+-- Índices de tabela `coins`
 --
 ALTER TABLE `coins`
   ADD PRIMARY KEY (`id_coin`);
 
 --
--- Índices para tabela `cupons`
+-- Índices de tabela `cupons`
 --
 ALTER TABLE `cupons`
   ADD PRIMARY KEY (`id_cupom`);
 
 --
--- Índices para tabela `descontos`
+-- Índices de tabela `descontos`
 --
 ALTER TABLE `descontos`
   ADD PRIMARY KEY (`id_desconto`);
 
 --
--- Índices para tabela `gamers`
+-- Índices de tabela `gamers`
 --
 ALTER TABLE `gamers`
   ADD PRIMARY KEY (`id_gamer`),
@@ -321,20 +323,20 @@ ALTER TABLE `gamers`
   ADD KEY `fk_gamers_coins1_idx` (`coins_id_coin`);
 
 --
--- Índices para tabela `log_acessos`
+-- Índices de tabela `log_acessos`
 --
 ALTER TABLE `log_acessos`
   ADD PRIMARY KEY (`id_log_acesso`),
   ADD KEY `fk_log_acessos_gamers1_idx` (`gamers_id_gamer`);
 
 --
--- Índices para tabela `missoes`
+-- Índices de tabela `missoes`
 --
 ALTER TABLE `missoes`
   ADD PRIMARY KEY (`id_missao`);
 
 --
--- Índices para tabela `missoes_has_personagens`
+-- Índices de tabela `missoes_has_personagens`
 --
 ALTER TABLE `missoes_has_personagens`
   ADD PRIMARY KEY (`missoes_id_missao`,`personagens_id_personagem`),
@@ -342,31 +344,31 @@ ALTER TABLE `missoes_has_personagens`
   ADD KEY `fk_missoes_has_personagens_missoes1_idx` (`missoes_id_missao`);
 
 --
--- Índices para tabela `personagens`
+-- Índices de tabela `personagens`
 --
 ALTER TABLE `personagens`
   ADD PRIMARY KEY (`id_personagem`);
 
 --
--- Índices para tabela `promocoes`
+-- Índices de tabela `promocoes`
 --
 ALTER TABLE `promocoes`
   ADD PRIMARY KEY (`id_promocao`);
 
 --
--- Índices para tabela `skins`
+-- Índices de tabela `skins`
 --
 ALTER TABLE `skins`
   ADD PRIMARY KEY (`id_skin`);
 
 --
--- Índices para tabela `vendas`
+-- Índices de tabela `vendas`
 --
 ALTER TABLE `vendas`
   ADD PRIMARY KEY (`id_venda`);
 
 --
--- AUTO_INCREMENT de tabelas despejadas
+-- AUTO_INCREMENT para tabelas despejadas
 --
 
 --
@@ -436,24 +438,24 @@ ALTER TABLE `vendas`
   MODIFY `id_venda` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- Restrições para despejos de tabelas
+-- Restrições para tabelas despejadas
 --
 
 --
--- Limitadores para a tabela `gamers`
+-- Restrições para tabelas `gamers`
 --
 ALTER TABLE `gamers`
   ADD CONSTRAINT `fk_gamers_coins1` FOREIGN KEY (`coins_id_coin`) REFERENCES `coins` (`id_coin`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_gamers_personagens` FOREIGN KEY (`personagens_id_personagem`) REFERENCES `personagens` (`id_personagem`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
--- Limitadores para a tabela `log_acessos`
+-- Restrições para tabelas `log_acessos`
 --
 ALTER TABLE `log_acessos`
   ADD CONSTRAINT `fk_log_acessos_gamers1` FOREIGN KEY (`gamers_id_gamer`) REFERENCES `gamers` (`id_gamer`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
--- Limitadores para a tabela `missoes_has_personagens`
+-- Restrições para tabelas `missoes_has_personagens`
 --
 ALTER TABLE `missoes_has_personagens`
   ADD CONSTRAINT `fk_missoes_has_personagens_missoes1` FOREIGN KEY (`missoes_id_missao`) REFERENCES `missoes` (`id_missao`) ON DELETE NO ACTION ON UPDATE NO ACTION,

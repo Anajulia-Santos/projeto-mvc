@@ -1,5 +1,5 @@
 const Personagem = require('../Model/PersonagensModel')
-const Db = require('../../repository/Database')
+const Db = require('../repository/Database')
 
 class PersonagemDAO {
 
@@ -19,13 +19,13 @@ class PersonagemDAO {
 
             const personagem = new Personagem()
 
-            personagem.id = query[index].personagemId
-            personagem.nome = query[index].personagemName
-            personagem.genero = query[index].personagemGenr
-            personagem.tipo = query[index].personagemTipo
-            personagem.totalcoin = query[index].personagemTCooin
-            personagem.start_latitude = query[index].personagemStlat
-            personagem.start_longitude = query[index].personagemStlong
+            personagem.id = query[index].id_personagem
+            personagem.nome = query[index].nome_personagem
+            personagem.genero = query[index].genero_personagem
+            personagem.tipo = query[index].tipo_personagem
+            personagem.totalcoin = query[index].totalcoin_personagem
+            personagem.start_latitude = query[index].start_latitude
+            personagem.start_longitude = query[index].start_longitude
 
             list_personagens.push(personagem.toJson())
         }

@@ -1,56 +1,56 @@
 class Missoes {
 
-    #id_missao
-    #nome_missao
-    #desc_missao
-    #recompensa_missao
+    #id
+    #nome
+    #desc
+    #recompensa
 
-    constructor(id_missao, nome_missao, desc_missao, recompensa_missao) {
-        this.#id_missao = id_missao
-        this.#nome_missao = nome_missao
-        this.#desc_missao = desc_missao
-        this.#recompensa_missao = recompensa_missao
+    constructor(id, nome, desc, recompensa) {
+        this.#id = id
+        this.#nome = nome
+        this.#desc = desc
+        this.#recompensa = recompensa
     }
 
-    get id_missao() {
-        return this.#id_missao
+    get id() {
+        return this.#id
     }
 
-    set id_missao(value) {
-        this.#id_missao = value
+    set id(value) {
+        this.#id = value
     }
 
-    get nome_missao() {
-        return this.#nome_missao
+    get nome() {
+        return this.#nome
     }
 
-    set nome_missao(value) {
-        this.#nome_missao = value
+    set nome(value) {
+        this.#nome = value
     }
 
-    get desc_missao() {
-        return this.#desc_missao
+    get desc() {
+        return this.#desc
     }
 
-    set desc_missao(value) {
-        this.#desc_missao = value
+    set desc(value) {
+        this.#desc = value
     }
 
-    get recompensa_missao() {
-        return this.#recompensa_missao
+    get recompensa() {
+        return this.#recompensa
     }
 
-    set recompensa_missao(value) {
-        this.#recompensa_missao = value
+    set recompensa(value) {
+        this.#recompensa = value
     }
 
     toJson() {
 
         return {
-            "id_missao": this.#id_missao,
-            "nome_missao": this.#nome_missao,
-            "desc_missao": this.#desc_missao,
-            "recompensa_missao": this.#recompensa_missao
+            "id": this.#id,
+            "nome": this.#nome,
+            "desc": this.#desc,
+            "recompensa": this.#recompensa
         }
 
     }

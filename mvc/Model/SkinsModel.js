@@ -1,89 +1,111 @@
 class Skins {
 
-    #id_skin
-    #categoria_skin
-    #nome_skin
-    #desc_skin
-    #dtnasc_gamer
-    #genero_skin
-    #valor_skin
+    #id
+    #categoria
+    #nome
+    #desc
+    #genero
+    #valor
+    #raridade
+    #foto1
+    #foto2
 
-    constructor(id_skin, categoria_skin, nome_skin, desc_skin, dtnasc_gamer, genero_skin, valor_skin,) {
-        this.#id_skin = id_skin
-        this.#categoria_skin = categoria_skin
-        this.#nome_skin = nome_skin
-        this.#desc_skin = desc_skin
-        this.#dtnasc_gamer = dtnasc_gamer
-        this.#genero_skin = genero_skin
-        this.#valor_skin = valor_skin
+    constructor(id, categoria, nome, desc, genero, valor, raridade, foto1, foto2) {
+        this.#id = id
+        this.#categoria = categoria
+        this.#nome = nome
+        this.#desc = desc
+        this.#genero = genero
+        this.#valor = valor
+        this.#raridade = raridade
+        this.#foto1 = foto1
+        this.#foto2 = foto2
     }
 
-    get id_skin() {
-        return this.#id_skin
+    get id() {
+        return this.#id
     }
 
-    set id_skin(value) {
-        this.#id_skin = value
+    set id(value) {
+        this.#id = value
     }
 
-    get categoria_skin() {
-        return this.#categoria_skin
+    get categoria() {
+        return this.#categoria
     }
 
-    set categoria_skin(value) {
-        this.#categoria_skin = value
+    set categoria(value) {
+        this.#categoria = value
     }
 
-    get nome_skin() {
-        return this.#nome_skin
+    get nome() {
+        return this.#nome
     }
 
-    set nome_skin(value) {
-        this.#nome_skin = value
+    set nome(value) {
+        this.#nome = value
     }
 
-    get desc_skin() {
-        return this.#desc_skin
+    get desc() {
+        return this.#desc
     }
 
-    set desc_skin(value) {
-        this.#desc_skin = value
+    set desc(value) {
+        this.#desc = value
     }
 
-    get dtnasc_gamer() {
-        return this.#dtnasc_gamer
+
+    get genero() {
+        return this.#genero
     }
 
-    set dtnasc_gamer(value) {
-        this.#dtnasc_gamer = value
+    set genero(value) {
+        this.#genero = value
     }
 
-    get genero_skin() {
-        return this.#genero_skin
+    get valor() {
+        return this.#valor
     }
 
-    set genero_skin(value) {
-        this.#genero_skin = value
+    set valor(value) {
+        this.#valor = value
     }
 
-    get valor_skin() {
-        return this.#valor_skin
+    get raridade() {
+        return this.#raridade
+    }
+    set raridade(value) {
+        this.#raridade = value
     }
 
-    set valor_skin(value) {
-        this.#valor_skin = value
+    get foto1() {
+        return this.#foto1
+    }
+    set foto1(value) {
+        this.#foto1 = value
+    }
+    
+    get foto2() {
+        return this.#foto2
+    }
+
+    set foto2(value) {
+        this.#foto2 = value
     }
 
     toJson() {
 
         return {
-            "id_skin": this.#id_skin,
-            "categoria_skin": this.#categoria_skin,
-            "nome_skin": this.#nome_skin,
-            "desc_skin": this.#desc_skin,
-            "dtnasc_gamer": this.#dtnasc_gamer,
-            "genero_skin": this.#genero_skin,
-            "valor_skin": this.#valor_skin
+            "id": this.#id,
+            "categoria": this.#categoria,
+            "nome": this.#nome,
+            "desc": this.#desc,
+            "genero": this.#genero,
+            "valor": this.#valor,
+            "raridade": this.#raridade,
+            "foto1": this.#foto1,
+            "foto2": this.#foto2
+
         }
 
     }

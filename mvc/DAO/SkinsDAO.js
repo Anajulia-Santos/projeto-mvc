@@ -1,5 +1,5 @@
 const Skin = require('../Model/SkinsModel')
-const Db = require('../../repository/Database')
+const Db = require('../repository/Database')
 
 class SkinDAO {
 
@@ -20,14 +20,16 @@ class SkinDAO {
             const skin = new Skin()
 
 
-            skin.id = query[index].SkId
-            skin.categoria = query[index].SkCatg
-            skin.nome = query[index].SkName
-            skin.desc = query[index].SkDesc
-            skin.genero = query[index].SkGenr
-            skin.valor = query[index].SkValue
-            skin.raridade = query[index].SkRar 
-            skin.foto1 = query[index].SkFt1
+            skin.id = query[index].id_skin 
+            skin.nome = query[index].nome_skin
+            skin.categoria = query[index].categoria_skin
+            skin.desc = query[index].desc_skin
+            skin.genero = query[index].genero_skin
+            skin.valor = query[index].valor_skin
+            skin.raridade = query[index].raridade_skin
+            skin.foto1 = query[index].foto1_skin
+            skin.foto2 = query[index].foto2_skin
+
 
 
             list_skins.push(skin.toJson())

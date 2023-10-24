@@ -1,12 +1,13 @@
-const ItemDAO = require('../DAO/ItemDAO.js')
+const PersonDAO = require('../DAO/PersonagensDAO.js')
 
 module.exports = (app) => {
 
     app.get("/getAllPersonagens", async (req, res) => {        
-        const itemDAO = new ItemDAO()
+        const personDAO = new PersonDAO()
 
+        res.setHeader("Access-Control-Allow-Origin", "*")
         //Retorna no formato Json
-        res.json(await itemDAO.consultarTodos())        
+        res.json(await personDAO.consultarTodos())        
     })
         
 }

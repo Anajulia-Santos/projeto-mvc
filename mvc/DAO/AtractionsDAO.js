@@ -1,5 +1,5 @@
 const Atrativo = require('../Model/AtrativosModel')
-const Db = require('../../repository/Database')
+const Db = require('../repository/Database')
 
 class AtractionDAO{
 
@@ -19,17 +19,18 @@ class AtractionDAO{
 
             const atrativo = new Atrativo()
 
-            atrativo.id = query[index].AtId
-            atrativo.nome = query[index].AtName
-            atrativo.lat = query[index].AtLat
-            atrativo.long = query[index].AtLong
-            atrativo.desc = query[index].AtDesc
-            atrativo.image = query[index].AtImg
+            atrativo.id = query[index].id_atrativos
+            atrativo.nome = query[index].nome_atrativo
+            atrativo.lat = query[index].lat_atrativo
+            atrativo.long = query[index].long_atrativo
+            atrativo.desc = query[index].desc_atrativo
+            atrativo.image = query[index].image_atrativo
 
             list_atraction.push(atrativo.toJson())     
         }
-       
+        console.log(list_atraction)
         return list_atraction
+       
     }
 
 }

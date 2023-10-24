@@ -1,56 +1,56 @@
 class Coins{
 
-    #id_coins
-    #nome_coins
-    #value_coins
-    #image_coins
+    #id
+    #nome 
+    #value 
+    #image 
 
-    constructor(id_coins,nome_coins,value_coins,image_coins,){
-        this.#id_coins = id_coins
-        this.#nome_coins = nome_coins 
-        this.#value_coins = value_coins
-        this.#image_coins = image_coins
+    constructor(id ,nome ,value ,image ,){
+        this.#id  = id 
+        this.#nome  = nome  
+        this.#value  = value 
+        this.#image  = image 
     }
 
-    get id_coins(){
-        return this.#id_coins
+    get id (){
+        return this.#id 
     }
 
-    set id_coins(value){
-        this.#id_coins = value
+    set id (value){
+        this.#id  = value
     }
 
-    get nome_coins(){
-        return this.#nome_coins
+    get nome (){
+        return this.#nome 
     }
 
-    set nome_coins(value){
-        this.#nome_coins = value
+    set nome (value){
+        this.#nome  = value
     }
     
-     get value_coins(){
-        return this.#value_coins
+     get value (){
+        return this.#value 
     }
 
-    set value_coins(value){
-        this.#value_coins = value
+    set value (value){
+        this.#value  = value
     }
 
-    get image_coins(){
-        return this.#image_coins
+    get image (){
+        return this.#image 
     }
 
-    set image_coins(value){
-        this.#image_coins = value
+    set image (value){
+        this.#image  = value
     }
 
     toJson(){
 
         return {
-            "id_coins": this.#id_coins,
-            "nome_coins": this.#nome_coins,
-            "value_coins": this.#value_coins,
-            "image_coins": this.#image_coins
+            "id": this.#id,
+            "nome": this.#nome ,
+            "value": this.#value,
+            "image": this.#image
         }
       
     }

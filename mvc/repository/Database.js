@@ -1,6 +1,7 @@
-var mysql = require('mysql')
+const res = require('express/lib/response')
+var mysql = require('mysql2')
 
-var connection = mysql.createConnection({
+var connection = mysql.createPool({
     host: 'localhost',
     user: 'root',
     password: '',

@@ -1,5 +1,5 @@
 const Item = require('../Model/itemModel')
-const Db = require('../../repository/Database')
+const Db = require('../repository/Database')
 
 class ItemDAO{
 

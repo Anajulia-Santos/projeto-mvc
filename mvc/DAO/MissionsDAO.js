@@ -1,5 +1,5 @@
 const Mission = require('../Model/MissoesModel')
-const Db = require('../../repository/Database')
+const Db = require('../repository/Database')
 
 class MissionDAO{
 
@@ -19,12 +19,12 @@ class MissionDAO{
 
             const mission = new Mission()
 
-            mission.id = query[index].missionId
-            mission.nome = query[index].missionNome
-            mission.desc = query[index].missionDesc
-            mission.recomp = query[index].imissionRec
+            mission.id = query[index].id_missao
+            mission.nome = query[index].nome_missao
+            mission.desc = query[index].desc_missao
+            mission.recomp = query[index].recompensa_missao
 
-            list_missions.push(item.toJson())     
+            list_missions.push(mission.toJson())     
         }
        
         return list_missions

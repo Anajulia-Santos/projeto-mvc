@@ -3,10 +3,11 @@ const CoinsDAO = require('../DAO/CoinsDAO.js')
 module.exports = (app) => {
 
     app.get("/getAllCoins", async (req, res) => {        
-        const CoinsDAO = new CoinsDAO()
+        const coinsDAO = new CoinsDAO()
 
+        res.setHeader("Access-Control-Allow-Origin", "*")
         //Retorna no formato Json
-        res.json(await CoinsDAO.consultarTodos())        
+        res.json(await coinsDAO.consultarTodos())        
     })
         
 }

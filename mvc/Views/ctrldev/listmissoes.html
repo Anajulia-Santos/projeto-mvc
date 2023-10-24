@@ -11,7 +11,7 @@
     </head>
 
 <body>
-    <main>
+    <nav>
         <h2 class="text-center">Listando Missões</h2>
         <div class="row">
             <button class="btn bg-warning">Adicionar Missão</button>
@@ -35,10 +35,15 @@
             </div> -->
           
         </section>
-    </main>
+        </nav>
+        <main>
+            <section class="listar border border-warning m-4" id="list-missions">
+                <!-- Adicionado pelo JS -->
+    
+        </main>
     <script>
           async function CarregarMissions() {
-            let elMissoes = document.querySelector("#list-atractions")
+            let elMissoes = document.querySelector("#list-missions")
 
             const dados = await fetch('http://localhost:3000/getAllAtrativos')
             const json = await dados.json()
@@ -46,7 +51,7 @@
 
             for (mission in missions) {
 
-                elMissoes.innerHTML = `
+                elMissoes.innerHTML += `
                 <div class="row m-3 border p-2 text-start">
                     <div class="col border-end text-center">${mission.nome}</div>
                     <div class="col  border-end text-center">${mission.desc}</div>
