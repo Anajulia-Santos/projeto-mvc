@@ -33,6 +33,22 @@ class AtractionDAO{
        
     }
 
+    async cadastrar(nome,latitude,longitude,descricao,imagem){
+
+        const atrativo = new Atrativo(nome,latitude,longitude,descricao,imagem)
+
+        atrativo.desc = descricao
+        atrativo.image = imagem
+
+        const sql = await this.#db.insertAtrativo(atrativo.toJson())
+
+        return sql.insertId;
+    }
+
+    async apagar(id){
+        const linhaAfetada = await this.#db.deleteAtrativos(id)
+        return linhaAfetada.affectedRows
+    }
 }
 
 

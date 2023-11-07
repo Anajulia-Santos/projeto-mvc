@@ -1,12 +1,54 @@
 const res = require('express/lib/response')
 var mysql = require('mysql2')
 
-var connection = mysql.createPool({
-    host: 'localhost',
-    user: 'root',
-    password: '',
-    database: 'bdgp'
-}).promise();
+class databaseMysql {
+
+    #connection
+
+    constructor() {
+        this.#connection = mysql.createPool({
+            host: 'localhost',
+            user: 'root',
+            password: '',
+            database: 'bdgp'
+        }).promise();
+    }
+
+    async deleteAtrativos(id) {
+        const sql = `delete from atrativos where id_atrativos =` + id
+
+        const res = await this.#connection.execute(sql)
+        return query[0]
+    }
+
+    async SelectSkin() {
+        const query = await connection.query('select * from skin')
+        return query[0]
+    }
+    async SelectPersonagem() {
+        const query = await connection.query('select * from personagem')
+        return query[0]
+    }
+    async SelectAtrativos() {
+        const query = await connection.query('select * from atrativos')
+        return query[0]
+    }
+    async SelectCoins() {
+        const query = await connection.query('select * from coins')
+        return query[0]
+    }
+    async SelectMissoes() {
+        const query = await connection.query('select * from missoes')
+        return query[0]
+    }
+}
+
+// var connection = mysql.createPool({
+//     host: 'localhost',
+//     user: 'root',
+//     password: '',
+//     database: 'bdgp'
+// }).promise();
 
 // function SelectPersonagem() {
 //     connection.connect();
@@ -35,36 +77,7 @@ var connection = mysql.createPool({
 // module.exports = {
 //     SelectItens
 // }
-async function SelectItens() {
-    const query = await connection.query('select * from item')
-    return query [0]
-}
-async function SelectSkin() {
-    const query = await connection.query('select * from skin')
-    return query [0]
-}
-async function SelectPersonagem() {
-    const query = await connection.query('select * from personagem')
-    return query [0]
-}
-async function SelectAtrativos() {
-    const query = await connection.query('select * from atrativos')
-    return query [0]
-}
-async function SelectCoins() {
-    const query = await connection.query('select * from coins')
-    return query [0]
-}
-async function SelectMissoes() {
-    const query = await connection.query('select * from missoes')
-    return query [0]
-}
 
-module.exports = {
-    SelectItens,
-    SelectSkin,
-    SelectPersonagem,
-    SelectAtrativos,
-    SelectCoins,
-    SelectMissoes
-}
+
+
+module.exports = databaseMysql

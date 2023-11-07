@@ -65,7 +65,7 @@
                     <div class="col  border-end text-center">${atrativo.desc}</div>     
                     <div class="col  border-end text-center images"><img src="../public/images/${atrativo.image}" alt=""></div>
                     <div class="col text-center"><button class="btn bg-success "><i class="bi bi-pen-fill m-1"></i></div>
-                    <div class="col text-center"><button class="btn bg-danger"><i class="bi bi-trash-fill m-1"></i></div>
+                    <div class="col text-center"><button class="btn bg-danger"><button onclik="apagar(${atrativo.id}, ${atrativo.nome})"><i class="bi bi-trash-fill m-1"></i></div>
                  </div>
                 
                 `
@@ -73,6 +73,16 @@
 
 
             }
+        }
+
+        async function apagar(id){
+
+            constdados = await fetch('https//localhost:3000/atrativo/' + id, {method: 'DELETE'})
+            const json = await dados.json()
+            let atrativos = await json
+
+            alert("O " +nome+  " foi apagado")
+            location.reload()
         }
         CarregarAtrativos()
     </script>
