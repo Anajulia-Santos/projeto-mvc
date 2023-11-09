@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Listando Atrativos</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <nav>
+        <h2 class="text-center">Listando Skins</h2>
+        <div class="row">
+            <button class="btn bg-warning"><a href="addatrativos.html" class="btn"><i class="bi bi-person-plus"></i>
+                    Adicionar Atrativo</a></button>
+        </div>
+        <section class="listar m-4 border border-warning border-4">
+            <div class="row m-3 border p-2 text-start bg-warning ">
+                <!-- Cabeçalho de listgem -->
+                <div class="col border-end text-center">NOME</div>
+                <div class="col  border-end text-center">CATEGORIA</div>
+                <div class="col  border-end text-center">DESCRIÇÃO</div>
+                <div class="col  border-end text-center">GÊNERO</div>
+                <div class="col  border-end text-center">VALOR</div>
+                <div class="col  border-end text-center">RARIDADE</div>
+                <div class="col  border-end text-center">FOTO 1</div>
+                <div class="col  border-end text-center">FOTO 2</div>
+                <div class="col text-center"><i class="bi bi-pen-fill m-1 "></i>Update</div>
+                <div class="col text-center"><i class="bi bi-trash-fill m-1"></i>Delete</div>
+            </div>
+            <!-- <div class="row m-3 border p-2 text-start bg-warning "> -->
+                <!-- Cabeçalho de listgem -->
+                <!-- <div class="col border-end text-center">NOME</div>
+                <div class="col  border-end text-center">CATEGORIA</div>
+                <div class="col  border-end text-center">DESCRIÇÃO</div>
+                <div class="col  border-end text-center">GÊNERO</div>
+                <div class="col  border-end text-center">VALOR</div>
+                <div class="col  border-end text-center">RARIDADE</div>
+                <div class="col  border-end text-center">FOTO 1</div>
+                <div class="col  border-end text-center">FOTO 2</div>
+                <div class="col text-center"><i class="bi bi-pen-fill m-1 "></i>Update</div>
+                <div class="col text-center"><i class="bi bi-trash-fill m-1"></i>Delete</div>
+            </div>
+          -->
+        </section>
+    </nav>
+    <main>
+        <section class="listar border border-warning m-4" id="lista-skins">
+            <!-- Adicionado pelo JS -->
+
+    </main>
+
+    <script>
+        async function CarregarSkins() {
+            let elSkins = document.querySelector("#lista-skins")
+
+            const dados = await fetch('http://localhost:3000/getAllAtrativos')
+            const json = await dados.json()
+            let skins = await json
+
+            for (let skin in skins) {
+
+                elSkins.innerHTML += `
+                <div class="row m-3 border p-2 text-start">
+                    <div class="col border-end text-center">${skin.nome}</div>
+                    <div class="col  border-end text-center">${skin.categoria}</div>
+                    <div class="col  border-end text-center">${skin.desc}</div>
+                    <div class="col  border-end text-center">${skin.genero}</div>     
+                    <div class="col  border-end text-center">${skin.valor}</div>     
+                    <div class="col  border-end text-center">${skin.raridade}</div>          
+                    <div class="col  border-end text-center images"><img src="../public/images/${skin.foto1}" alt=""></div>
+                    <div class="col  border-end text-center images"><img src="../public/images/${skin.foto2}" alt=""></div>
+                    <div class="col text-center"><button class="btn bg-success "><i class="bi bi-pen-fill m-1"></i></div>
+                    <div class="col text-center"><button class="btn bg-danger"><i class="bi bi-trash-fill m-1"></i></div>
+                 </div>
+                
+                `
+
+
+
+            }
+        }
+        CarregarSkins()
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

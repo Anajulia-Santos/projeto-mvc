@@ -14,25 +14,19 @@ class databaseMysql {
         }).promise();
     }
 
-    async deleteAtrativos(id) {
-        const sql = `delete from atrativos where id_atrativos =` + id
-
-        const res = await this.#connection.execute(sql)
-        return query[0]
-    }
-
-    async SelectSkin() {
+    async selectSkin() {
         const query = await connection.query('select * from skin')
         return query[0]
     }
-    async SelectPersonagem() {
+    async selectPersonagem() {
         const query = await connection.query('select * from personagem')
         return query[0]
     }
-    async SelectAtrativos() {
-        const query = await connection.query('select * from atrativos')
+    async selectAtrativos() {
+        const query = await this.#connection.query('select * from atrativos where' )
         return query[0]
     }
+
     async SelectCoins() {
         const query = await connection.query('select * from coins')
         return query[0]
@@ -40,6 +34,35 @@ class databaseMysql {
     async SelectMissoes() {
         const query = await connection.query('select * from missoes')
         return query[0]
+    }
+
+    async insertAtrativo(param) {
+        const sql = `insert into atrativos (nome_atrativo, lat_atrativo, long_atrativo, desc_atrativo, image_atrativo)
+         values ('${param.nome}','${param.latitude}','${param.longitude}','${param.descricao}','${param.imagem}')`
+
+        const query = await this.#connection.execute(sql)
+        return query[0]
+    }
+
+    async deleteAtrativos(id) {
+        const sql = `delete from atrativos where id_atrativos =` + id
+
+        const res = await this.#connection.execute(sql)
+        return res[0]
+    }
+
+    async updateAtrativos(id, nome, lat, long, desc, image) {
+        `update atrativo
+            set nome_atrativo = ${nome},
+                lat_atrativo = ${lat},
+                long_atrativo = ${long},
+                desc_atrativo = ${desc},
+                image_atrativo = ${image}
+                where id_atrativos = ${id}
+        `
+
+        const r = await this.#connection.execute(sql)
+        return r[0]
     }
 }
 
