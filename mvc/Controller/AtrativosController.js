@@ -26,18 +26,19 @@
 //         })
 // }
 
+const { url } = require('inspector')
 const AtrativoDAO = require('../DAO/AtractionsDAO')
 const path = require('path')
 
 module.exports = (app) => {
 
-    app.get("/atrativos", async (req, res) => {
+    app.get("/atrativo", async (req, res) => {
         const atrativoDAO = new AtrativoDAO()
 
         //Resolve problemas de cors
         res.setHeader("Access-Control-Allow-Origin", "*")
         //Retorna no formato Json
-        res.json(await atrativoDAO.consultarUm())
+        res.json(await atrativoDAO.consultarTodos())
     })
 
     app.post("/atrativo", async (req, res) => {
@@ -81,29 +82,31 @@ module.exports = (app) => {
         })
     })
 
-    app.put("/atrativo/:id", async (req, res) => {
-        const AtrativoDAO = new AtrativoDAO()
-
+    app.put("/atrativo/:id", async (req, res) =>{
+        const atrativoDAO = new AtrativoDAO()
+        
         const {
             nome,
+            descricao,
             lat,
             long,
-            image,
+            imagem,
             id
         } = req.body;
-
-        if (id = req.params.id) {
-            const r = await AtrativoDAO.atualizar(nome, lat, long, image, id)
-            res.json({msg: ''})
-
-        } else {
-             
+      
+        if(id == req.params.id){
+          const r =  await atrativoDAO.atualizar(nome, descricao,lat, long, imagem, id)
+          res.json({msg: "O total de linhas alteradas: "+r})
         }
+        else{
+          res.json({msg:"Problema."})
+        }     
+
     })
-    app.get("/pagina/listatrativos", (req, res) => {
+    app.get("/listatrativos", (req, res) => {
         res.sendFile(path.resolve('mvc/views/ctrldev/atrativos/listattractions.html'))
     })
-    app.get("/pagina/alteratrativos/:id", async (req, res) => {
+    app.get("/alteratrativos/:id", async (req, res) => {
 
         const atrativo = new AtrativoDAO()
         const r = await atrativo.consultarUm(req.params.id)

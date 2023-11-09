@@ -1,4 +1,3 @@
-const res = require('express/lib/response')
 var mysql = require('mysql2')
 
 class databaseMysql {
@@ -22,8 +21,9 @@ class databaseMysql {
         const query = await connection.query('select * from personagem')
         return query[0]
     }
+
     async selectAtrativos() {
-        const query = await this.#connection.query('select * from atrativos where' )
+        const query = await this.#connection.query('select * from atrativos')
         return query[0]
     }
 
@@ -43,7 +43,10 @@ class databaseMysql {
         const query = await this.#connection.execute(sql)
         return query[0]
     }
-
+    async selectAtrativos() {
+        const query = await this.#connection.query('select * from atrativos where id_atrativos =')
+        return query[0]
+    }
     async deleteAtrativos(id) {
         const sql = `delete from atrativos where id_atrativos =` + id
 

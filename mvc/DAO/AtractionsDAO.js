@@ -57,68 +57,92 @@
 const Atrativo = require('../Model/AtrativosModel')
 const Db = require('../repository/Database')
 
-class AtrativoDAO {
+class AtrativoDAO{
 
     #db
 
-    constructor() {
+    constructor(){
         this.#db = new Db()
     }
 
-    async consultarUm(id) {
+    async consultarTodos(){
+
+        let list_atrativos = []
 
         const query = await this.#db.selectAtrativos()
 
+        for (let index = 0; index < query.length; index++) {
+
+            const atrativo = new Atrativo()
+
+            atrativo.id = query[index].id_atrativos
+            atrativo.nome = query[index].nome_atrativo
+            atrativo.latitude = query[index].lat_atrativo
+            atrativo.longitude = query[index].long_atrativo
+            atrativo.descricao = query[index].desc_atrativo
+            atrativo.imagem = query[index].image_atrativo
+
+            list_atrativos.push(atrativo.toJson())     
+        }
+       
+        return list_atrativos
+    }
+
+    async consultarUm(id){      
+
+        const query = await this.#db.selectAtrativos(id)
+
         const atrativo = new Atrativo()
 
-        if (query) {
+        if(query){
             atrativo.id = query[0].id_atrativos
             atrativo.nome = query[0].nome_atrativo
             atrativo.latitude = query[0].lat_atrativo
             atrativo.longitude = query[0].long_atrativo
             atrativo.descricao = query[0].desc_atrativo
-            atrativo.imagem = query[0].image_atrativo
+            atrativo.imagem = query[0].image_atrativo 
         }
 
+      
         return atrativo.toJson()
+    }    
+   
+    async cadastrar(nome, imagem, latitude, longitude, descricao){
+
+       const atrativo = new Atrativo(nome, latitude, longitude)
+
+       atrativo.descricao = descricao
+       atrativo.imagem = imagem
+
+       const sql = await this.#db.insertAtrativo(atrativo.toJson())
+       
+       return sql.insertId;
+    } 
+
+    async apagar(id){
+      const linhasAfetadas =  await this.#db.deleteAtrativos(id)
+      return linhasAfetadas.affectedRows
     }
-
-    async cadastrar(nome, lat, long, desc, image) {
-
+    
+    async atualizar(nome, descricao, lat, long, imagem, id){
         const atrativo = new Atrativo(nome, lat, long)
+        atrativo.descricao = descricao
+        atrativo.imagem = imagem
+        atrativo.id = id
 
-        atrativo.nome = nome
-        atrativo.lat = lat
-        atrativo.long = long
-        atrativo.desc = desc
-        atrativo.image = image
+        const r = await this.#db.updateAtrativo(
+            atrativo.nome,
+            atrativo.latitude,
+            atrativo.longitude,
+            atrativo.descricao,
+            atrativo.imagem,
+            atrativo.id
+        )
 
-        const sql = await this.#db.insertAtrativo(atrativo.toJson())
-
-        return sql.insertId;
-    }
-    async atualizar(nome, lat, long, desc, image) {
-
-        const atrativo = new Atrativo(nome, lat, long)
-        atrativo.desc = desc
-        atrativo.lat = image
-        atrativo.long = long
-        atrativo.desc = desc
-        atrativo.image = image
-
-
-        const sql = await this.#db.updateAtrativos(atrativo.toJson())
-
-        return sql.updateAtrat;
+        return r.affectedRows;
 
     }
-
-    async apagar(id) {
-        const linhasAfetadas = await this.#db.deleteAtrativos(id)
-        return linhasAfetadas.affectedRows
-    }
-
-
+    
 
 }
 
